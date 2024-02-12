@@ -23,7 +23,7 @@
                         @if ($errors->any())
                             <input type="checkbox" class="form-check-input" name="technologies[]"
                                 id="technology-{{ $technology->id }}" value="{{ $technology->id }}"
-                                {{ in_array($technology->id, old('technologies[]')) ? 'checked' : '' }}>
+                                {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}>
                             <label for="technology-{{ $technology->id }}">{{ $technology->title }}</label>
                         @else
                             <input type="checkbox" class="form-check-input" name="technologies[]"
