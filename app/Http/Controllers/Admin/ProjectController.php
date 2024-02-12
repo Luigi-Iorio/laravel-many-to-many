@@ -43,7 +43,9 @@ class ProjectController extends Controller
         $data = $request->validated();
 
         $newProject = new Project();
-        $newProject->img_project = Storage::put('uploads', $data['img_project']);;
+        if (isset($data['img_project'])) {
+            $newProject->img_project = Storage::put('uploads', $data['img_project']);
+        }
         $newProject->title = $data['title'];
         $newProject->slug = Str::of($newProject->title)->slug('-');
         $newProject->stack = $data['stack'];
@@ -101,6 +103,10 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        if ($project->img_project) {
+            Storage::delete($project->img_project);
+        }
+
         $project->delete();
 
         return redirect()->route('admin.projects.index')->with('message', 'Il progetto è stato eliminato correttamente');
