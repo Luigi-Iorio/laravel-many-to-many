@@ -15,7 +15,30 @@
                 @enderror
             </div>
             <div class="col-md-6">
-                <label for="stack" class="form-label">Tecnologie</label>
+                <div class="cont">
+                    <label class="form-label">Tecnologie</label>
+                </div>
+                @foreach ($technologies as $technology)
+                    <div class="form-check form-check-inline">
+                        @if ($errors->any())
+                            <input type="checkbox" class="form-check-input" name="technologies[]"
+                                id="technology-{{ $technology->id }}" value="{{ $technology->id }}"
+                                {{ in_array($technology->id, old('technologies[]')) ? 'checked' : '' }}>
+                            <label for="technology-{{ $technology->id }}">{{ $technology->title }}</label>
+                        @else
+                            <input type="checkbox" class="form-check-input" name="technologies[]"
+                                id="technology-{{ $technology->id }}" value="{{ $technology->id }}"
+                                {{ $project->technologies->contains($technology->id) ? 'checked' : '' }}>
+                            <label for="technology-{{ $technology->id }}">{{ $technology->title }}</label>
+                        @endif
+                    </div>
+                @endforeach
+                @error('technologies')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="col-md-6">
+                <label for="stack" class="form-label">Stack</label>
                 <input type="text" class="form-control" name="stack" id="stack"
                     value="{{ old('stack', $project->stack) }}">
                 @error('stack')

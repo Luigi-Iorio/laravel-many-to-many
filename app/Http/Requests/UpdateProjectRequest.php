@@ -27,7 +27,8 @@ class UpdateProjectRequest extends FormRequest
             'slug' => 'max:100',
             'stack' => 'required|max:60',
             'description' => 'max:500',
-            'type_id' => 'nullable|exists:types,id'
+            'type_id' => 'nullable|exists:types,id',
+            'technologies' => 'max:50'
         ];
     }
 
@@ -41,6 +42,7 @@ class UpdateProjectRequest extends FormRequest
             'stack.max' => 'Il campo stack deve essere minore di 60 caratteri',
             'description.max' => 'Il campo stack deve essere minore di 500 caratteri',
             'type_id.exists' => 'La selezione non è valida',
+            'technologies.max' => 'Il campo stack deve essere minore di 50 caratteri'
         ];
     }
 }
