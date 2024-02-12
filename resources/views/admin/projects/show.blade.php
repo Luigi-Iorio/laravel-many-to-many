@@ -15,6 +15,16 @@
             <p>{{ $project->type->type_title ?? 'Da inserire' }}</p>
         </div>
         <div class="cont">
+            <h5>Tecnologie:</h5>
+            <ul>
+                @foreach ($project->technologies as $technology)
+                    <li>
+                        <p>{{ $technology->title ?? 'Da inserire' }}</p>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+        <div class="cont">
             <h5>Stack:</h5>
             <p>{{ $project->stack }}</p>
         </div>
