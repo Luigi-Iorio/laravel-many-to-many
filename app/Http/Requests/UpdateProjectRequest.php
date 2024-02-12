@@ -23,7 +23,7 @@ class UpdateProjectRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => Rule::unique('projects')->ignore($this->project), 'max:50',
+            'title' => Rule::unique('projects')->ignore($this->project), 'required|max:50',
             'slug' => 'max:100',
             'stack' => 'required|max:60',
             'description' => 'max:500',
@@ -35,6 +35,7 @@ class UpdateProjectRequest extends FormRequest
     public function messages()
     {
         return [
+            'title.required' => 'Il campo titolo è obbligatorio',
             'title.unique' => 'Il campo titolo deve essere univoco',
             'title.max' => 'Il campo titolo deve essere minore di 50 caratteri',
             'slug.max' => 'Il campo slug deve essere minore di 100 caratteri',
