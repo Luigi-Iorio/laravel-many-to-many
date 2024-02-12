@@ -78,7 +78,6 @@ class ProjectController extends Controller
         $data = $request->validated();
 
         $project->slug = Str::of($data['title'])->slug('-');
-        $project->img_project = Storage::put('uploads', $data['img_project']);;
         $project->update($data);
 
         return redirect()->route('admin.projects.index')->with('message', 'Il progetto è stato modificato correttamente');
