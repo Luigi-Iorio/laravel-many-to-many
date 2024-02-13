@@ -27,7 +27,7 @@ class StoreProjectRequest extends FormRequest
             'stack' => 'required|max:60',
             'description' => 'max:500',
             'type_id' => 'nullable|exists:types,id',
-            'technologies' => 'max:50'
+            'technologies' => 'nullable|exists:technologies,id'
         ];
     }
 
@@ -42,7 +42,7 @@ class StoreProjectRequest extends FormRequest
             'stack.max' => 'Il campo stack deve essere minore di 60 caratteri',
             'description.max' => 'Il campo stack deve essere minore di 500 caratteri',
             'type_id.exists' => 'La selezione non è valida',
-            'technologies.max' => 'Il campo stack deve essere minore di 50 caratteri',
+            'technologies.exists' => 'La selezione non è valida',
         ];
     }
 }
