@@ -67,19 +67,19 @@
                                 <li class="nav-item">
                                     <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
                                         href="{{ route('admin.projects.index') }}">
-                                        <i class="fa-solid fa-eye fa-lg fa-fw"></i> Visualizza Progetti
+                                        <i class="fa-solid fa-diagram-project fa-lg fa-fw"></i> Visualizza Progetti
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
                                         href="{{ route('admin.types.index') }}">
-                                        <i class="fa-regular fa-eye fa-lg fa-fw"></i> Visualizza Tipi
+                                        <i class="fa-solid fa-code fa-lg fa-fw"></i> Visualizza Tipi
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
                                         href="{{ route('admin.technologies.index') }}">
-                                        <i class="fa-solid fa-eye fa-lg fa-fw"></i> Vis. Tecnologie
+                                        <i class="fa-solid fa-layer-group fa-lg fa-fw"></i> Vis. Tecnologie
                                     </a>
                                 </li>
                             </ul>
