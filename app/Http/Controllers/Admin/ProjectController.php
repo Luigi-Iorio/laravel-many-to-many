@@ -107,6 +107,8 @@ class ProjectController extends Controller
             Storage::delete($project->img_project);
         }
 
+        $project->technologies()->sync([]);
+
         $project->delete();
 
         return redirect()->route('admin.projects.index')->with('message', 'Il progetto è stato eliminato correttamente');
