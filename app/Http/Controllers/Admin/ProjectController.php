@@ -87,6 +87,15 @@ class ProjectController extends Controller
         $data = $request->validated();
 
         $project->slug = Str::of($data['title'])->slug('-');
+
+        if ($request->hasFile('img_project')) { // se è presente un'immagine 
+            if ($project->img_project) {
+                Storage::delete($project->img_project); // elimina immagine
+            }
+
+            $project->img_project = Storage::put('uploads', $data['img_project']); //salva la nuova immagine
+        }
+
         $project->update($data);
 
         if (isset($data['technologies'])) {

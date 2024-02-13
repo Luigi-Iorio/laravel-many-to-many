@@ -23,6 +23,7 @@ class UpdateProjectRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'img_project' => 'nullable|image',
             'title' => [Rule::unique('projects')->ignore($this->project), 'required', 'max:50'],
             'slug' => 'max:100',
             'stack' => 'required|max:60',
@@ -35,6 +36,7 @@ class UpdateProjectRequest extends FormRequest
     public function messages()
     {
         return [
+            'img_project.image' => 'Il file deve essere un\'immagine',
             'title.required' => 'Il campo titolo è obbligatorio',
             'title.unique' => 'Il campo titolo deve essere univoco',
             'title.max' => 'Il campo titolo deve essere minore di 50 caratteri',

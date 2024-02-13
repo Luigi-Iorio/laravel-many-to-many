@@ -3,9 +3,18 @@
 @section('content')
     <div class="container edit py-5">
         <h2 class="mb-5">Modifica Il Progetto</h2>
-        <form action="{{ route('admin.projects.update', $project) }}" method="POST" class="row g-3">
+        <form action="{{ route('admin.projects.update', $project) }}" method="POST" enctype="multipart/form-data"
+            class="row g-3">
             @csrf
             @method('PUT')
+            <div class="col-md-6">
+                <label for="img_project" class="form-label">Immagine</label>
+                <input type="file" class="form-control" id="img_project" name="img_project"
+                    value="{{ old('img_project', $project->img_project) }}">
+                @error('img_project')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            </div>
             <div class="col-md-6">
                 <label for="title" class="form-label">Titolo</label>
                 <input type="text" class="form-control" name="title" id="title"

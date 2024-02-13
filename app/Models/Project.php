@@ -19,5 +19,5 @@ class Project extends Model
         return $this->belongsToMany(Technology::class);
     }
 
-    protected $guarded = ['slug'];
+    protected $guarded = ['slug', 'img_project'];
 }
